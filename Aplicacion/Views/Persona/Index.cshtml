@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<h2>@ViewBag.Title.</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Lista de Personas</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <div class="col-md-12">
+                    <table id="GrillaPersonas" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nombres</th>
+                                <th>Apeelidos</th>
+                                <th>Fecha Nacimiento</th>
+                                <th>Correo</th>
+                                <th>Dirección</th>
+                                <th>Telefono</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+@{
+    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    serializer.MaxJsonLength = Int32.MaxValue;
+    var jsonModel = serializer.Serialize(ViewBag.Personas);
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var personas = @Html.Raw(jsonModel);
+        CargarPersonas(personas);
+    });
+</script>

@@ -1,0 +1,140 @@
+﻿@using Model.Types;
+@{
+    ViewBag.Title = "Crear Persona";
+}
+<h2>@ViewBag.Title.</h2>
+
+@model Personas
+<div class="row">
+    <div class="col-md-12">
+        @if (ViewBag.Error != null)
+        {
+            <div class="form-gp">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </div>
+        }
+        @if (ViewBag.Valido != null)
+        {
+            <script>
+                alert('La persona se ha creado correctamente;');
+                setTimeout(function () {
+                    location.href = '/Persona/Index';  
+                }, 10);
+            </script>
+        }
+
+        @using (Html.BeginForm("Create", "Persona", FormMethod.Post))
+        {
+            <div class="col-md-6">
+                <label>
+                    Tipo Identificación:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.DropDownListFor(Model => Model.TipoIdentificacion, new SelectList(ViewBag.TiposIdentificacion, "Key", "Value"), "Seleccione...", new { @class = "form-control", @style = "height:30px;" })
+                @Html.ValidationMessageFor(Model => Model.TipoIdentificacion, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Número Identificación:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.NumeroIdentificacion, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.NumeroIdentificacion, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Nombres:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Nombre, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.Nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Apellidos:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Apellido, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.Apellido, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Fecha de Nacimiento:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.FechaNacimiento, new { htmlAttributes = new { @type = "date", @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.FechaNacimiento, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Correo:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Correo, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.Correo, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Correo 2:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Correo2, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.Correo2, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Dirección:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Direccion, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.Direccion, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Dirección 2:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Direccion2, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.Direccion2, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Telefono:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Telefono, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.Telefono, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Telefono 2:
+                </label>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Telefono2, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "" } })
+                @Html.ValidationMessageFor(Model => Model.Telefono2, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary">
+                    <i class="fa fa-floppy-o "></i>&nbsp;&nbsp;Guardar Persona
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-warning">
+                    <i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar
+                </button>
+            </div>
+        }
+
+    </div>
+</div>

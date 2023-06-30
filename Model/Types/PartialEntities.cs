@@ -12,14 +12,15 @@ namespace Model.Types
             public string TipoIdentificacion { get; set; }
 
             [Required(ErrorMessage = "Debe ingresar un número de identificación.")]
+            [RegularExpression("[a-zA-Z0-9$@$ÁÉÍÓÚÑ]+$", ErrorMessage = "El valor ingresado tiene caracteres invalidos.")]
             public string NumeroIdentificacion { get; set; }
 
             [Required(ErrorMessage = "Debe ingresar un nombre.")]
-            [RegularExpression("[a-zA-Z$@$!&,ÁÉÍÓÚÑ'\":()Üüáéíóúñ;%*+-–. ]+$", ErrorMessage = "El valor ingresado tiene caracteres invalidos.")]
+            [RegularExpression("[a-zA-Z ]{1,20}", ErrorMessage = "El valor ingresado tiene caracteres invalidos.")]
             public string Nombre { get; set; }
 
             [Required(ErrorMessage = "Debe ingresar un apellido.")]
-            [RegularExpression("[a-zA-Z$@$!&,ÁÉÍÓÚÑ'\":()Üüáéíóúñ;%*+-–. ]+$", ErrorMessage = "El valor ingresado tiene caracteres invalidos.")]
+            [RegularExpression("[a-zA-Z ]{1,20}", ErrorMessage = "El valor ingresado tiene caracteres invalidos.")]
             public string Apellido { get; set; }
 
             [Required(ErrorMessage = "Debe ingresar una fecha de nacimiento.")]
@@ -43,5 +44,13 @@ namespace Model.Types
             [RegularExpression("[a-zA-Z0-9$@$!,ÁÉÍÓÚÑ'\":_()#Üüáéíóúñ;%/&*+-. ]+$", ErrorMessage = "El valor ingresado tiene caracteres invalidos ")]
             public string Direccion2 { get; set; }
         }
+
+        public string FechaNacimientoStr => FechaNacimiento.ToShortDateString();
+
+        public string CorreoStr => Correo != null ? Correo : "";
+
+        public string DireccionStr => Direccion != null ? Direccion : "";
+
+        public string TelefonoStr => Telefono != null ? Telefono : "";
     }
 }
